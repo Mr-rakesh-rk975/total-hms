@@ -1,0 +1,293 @@
+.mainOuter {
+    color: #fcfcfc;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+
+.main-maxWidth {
+    max-width: 1140px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    color: #1c2434;
+    position: relative;
+}
+
+.mainBtn-section {
+    position: absolute;
+}
+
+ul.btnMenu {
+    display: flex;
+    list-style: none;
+    column-gap: 10px;
+    flex-wrap: wrap;
+    padding: 0px 0px 0px 10px;
+    margin-bottom: 20px;
+}
+
+ul.btnMenu li {
+    margin-bottom: 20px;
+}
+
+
+ul.btnMenu li Button {
+    border: navajowhite;
+    padding: 7px 22px;
+    background: #1c2434;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 15px;
+
+}
+
+ul.btnMenu Button:hover {
+    background-color: #9bbc4e;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+
+}
+
+
+.mainPOst-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: absolute;
+    top: 50px;
+    width: 70%;
+}
+
+.card-info {
+    text-align: left;
+    padding: 0px 10px;
+    text-wrap: wrap !important;
+}
+
+.post-item {
+    margin: 10px;
+}
+
+
+img.post-image {
+    width: 100%;
+}
+
+.card {
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 30%;
+    min-height: 150px;
+    /* Adjust the height as needed */
+}
+
+.card-details {
+    padding: 10px;
+}
+
+
+.information {
+    color: #000;
+    font-weight: bold;
+    padding: 5px;
+}
+.post-item{
+box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, .05);
+-webkit-transition: all 0.3s ease-out;
+transition: all 0.3s ease-out;
+margin-bottom: 23px;
+border: 1px solid #f2f2f2;
+background: white;
+}
+
+
+
+
+
+
+.mainSection2 {
+    width: 28.5%;
+}
+
+.mainSection2-Inner {
+    margin-top: 60px;
+    margin-bottom: 0;
+    background-color: #E1E4ED;
+    padding: 19px 19px 19px 19px;
+    text-align: left;
+    border-radius: 2px;
+    color: #1c2434;
+}
+
+.mainSection2-Inner p {
+    font-size: 17px;
+    font-weight: 500;
+    color: #1c2434;
+}
+
+
+.mainSection2-Inner h6 {
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 1.5em;
+    color: #1c2434;
+
+}
+
+.Inner-input1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.Inner-input2 {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.Inner-inputs label {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+.Inner-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.Inner-inputs label span::after {
+    content: "*";
+    color: red;
+}
+
+.Inner-inputs input {
+    width: 80%;
+    padding: 5px;
+}
+
+.card-info h3 a {
+    font-size: 16px;
+    color: #1c2435;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.card-info p span {
+  
+    font-weight: bold;
+    color: rebeccapurple;
+    font-size: 16px;
+}
+
+
+
+
+@media (max-width:1024px) {
+    .main-maxWidth {
+        max-width: 1140px;
+        margin: auto;
+        display: block;
+    }
+
+    .mainSection2 {
+        width: 90%;
+        margin: auto;
+    }
+
+    .Inner-inputs input {
+        width: 90%;
+        padding: 5px;
+    }
+
+    .mainBtn-section {
+        position: relative;
+    }
+
+    .mainPOst-section {
+        position: relative;
+        top: 0;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+       
+    }
+
+    img.post-image {
+      width: 100%;
+    }
+    .post-item {
+        box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, .05);
+        transition: all 0.3s ease-out;
+        margin-bottom: 23px;
+        border: 1px solid #f2f2f2;
+        background: white;
+        width: 30%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .form-inputs {
+        display: flex;
+        flex-direction: row !important;
+        align-items: flex-end;
+        justify-content: space-evenly;
+    }
+    .inputWrapper {
+        display: flex;
+        flex-direction: column !important;
+    }
+}
+
+
+
+
+@media (max-width:768px) {
+    .post-item {
+        width: 40%;
+        margin-bottom: 20px;
+    }
+    .mainPOst-section{
+
+    }
+}
+
+
+
+
+@media (max-width:550px) {
+    .post-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .form-inputs {
+        display: flex;
+        flex-direction: column !important;
+        align-items: baseline;
+        
+    }
+    .inputWrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    label.category-input input {
+        
+        width: 100% !important;
+    }
+    textarea#info-txt{
+        width: 100% !important;
+    }
+    
+}
+
+
+
+@media (max-width:320px) {
+    img.post-img {
+        margin: 0;
+        padding: 0;
+        width: 80%;
+    }
+}

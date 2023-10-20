@@ -1,0 +1,37 @@
+
+.maintopOuter{
+    background-color: #FCFCFC;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+
+.maintop-maxwidth{
+    max-width: 1140px;
+    display: flex;
+   margin: auto;
+    position: relative;
+    box-shadow:  0px 1px 7px -4px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 20px 30px;
+}
+
+.Card {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.Card h1{
+    font-size: 40px;
+    font-weight: 700;
+    color: #1c2434;
+}
+
+.Card p{
+    color: #1c2434;
+}
+
+.Card h2{
+    color: #1c2434;
+    font-size: 28px;
+}

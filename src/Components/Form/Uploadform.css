@@ -1,0 +1,68 @@
+.form-inputs {
+    border: 2px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+textarea#info-txt {
+    height: 60px;
+    width: 80%;
+    resize: none;
+    line-height: 1;
+    padding: 10px;
+    font-family: monospace;
+    vertical-align: top;
+}
+
+
+.form-inputs label span::after {
+    content: "*";
+    color: red;
+}
+label.category-input input {
+    padding: 5px;
+    width: 80%;
+}
+
+/* .emptyImg-section {
+    width: 90%;
+    height: 150px;
+    background-image: url('../../images/bg-posts.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+} */
+
+
+label {
+    margin: 5px 0px;
+}
+
+button.submit-Posts {
+    border: navajowhite;
+    padding: 10px 22px;
+    border-radius: 5px;
+    background-color: #1c2434;
+    color: #ffffff;
+    font-size: 14px;
+    border: 1px solid #9bbc4e;
+    font-weight: 700;
+}
+
+button.submit-Posts:hover {
+    background-color: #9bbc4e;
+    border: 1px solid #1c2434;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.2s ease-in-out;
+}
+
+
+img.post-img {
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    
+    
+}
