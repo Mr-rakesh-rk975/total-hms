@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../Form/Uploadform.css';
 
-function Uploadform() {
+function Uploadform({ onCategoryChange }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [category, setCategory] = useState(''); // State for category input
   const [information, setInformation] = useState(''); // State for information input
@@ -26,20 +26,15 @@ function Uploadform() {
         });
 
         if (response.ok) {
-            
           console.log('File uploaded successfully.');
           setSelectedFile(null);
           setCategory('');
           setInformation('');
-
-          // You can handle the response from the server here if needed
         } else {
           console.error('File upload failed.');
-          // Handle any errors from the server
         }
       } catch (error) {
         console.error('Network error:', error);
-        // Handle network errors
       }
     } else {
       // Handle case when no file is selected
@@ -48,34 +43,42 @@ function Uploadform() {
 
   return (
     <div className="formOuter">
-        {/* Form starts here */}
       <form onSubmit={handleSubmit}>
         <div className='form-inputs'>
           <label htmlFor="category">
             <div className='emptyImg-section'>
-              {/* file upload section start here  */}
               {selectedFile && (
                 <div>
                   <img src={URL.createObjectURL(selectedFile)} alt="posts" className='post-img' />
                   <p>Selected file: {selectedFile.name}</p>
                 </div>
               )}
-              {/* file upload section end */}
-              {/* Upload button */}
-            <input type="file" onChange={handleFileUpload} />
+              <input type="file" onChange={handleFileUpload} />
             </div>
           </label>
 
-          {/* input sections */}
           <div className="inputWrapper">
-          <label className='category-input' htmlFor="Kategori">
-            <span>Kategori</span>:
-            <input
-              type="text"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)} // Update category state
-            />
-          </label>
+            <label className='category-input' htmlFor="Kategori">
+              <span>Kategori</span>:
+              <div className="select-container">
+                <select
+                  value={category}
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                    onCategoryChange(e.target.value);
+                  }}
+                >
+                  <option value="">Select a Category</option>
+                  <option value="Forskrifter">Forskrifter</option>
+                  <option value="Helse, miljø og sikkerhet">Helse, miljø og sikkerhet</option>
+                  <option value="Internkontroll">Internkontroll</option>
+                  <option value="Ledelse">Ledelse</option>
+                  <option value="Verneombud">Verneombud</option>
+                </select>
+              </div>
+            </label>
+
+          </div>
 
           <label htmlFor="Kategori-Informasjon">
             <span>Kategori Informasjon</span>:
@@ -84,16 +87,14 @@ function Uploadform() {
               rows="1"
               cols="5"
               value={information}
-              onChange={(e) => setInformation(e.target.value)} // Update information state
+              onChange={(e) => setInformation(e.target.value)}
             ></textarea>
           </label>
-          </div>
           <label htmlFor="submit">
             <button type="submit" className='submit-Posts'>Submit</button>
           </label>
         </div>
       </form>
-      {/* Form end here */}
     </div>
   );
 }

@@ -66,3 +66,52 @@ img.post-img {
     
     
 }
+
+
+/* select section / dropdown section start */
+
+.select-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .select-container select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+  }
+  
+  /* Adding styles for the select arrow icon */
+  .select-container::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  /* Styling when the select element is focused */
+  .select-container select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Animation and transition */
+  .select-container select {
+    transition: all 0.3s;
+  }
+  
+  /* Style for the options in the dropdown */
+  .select-container select option {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+  }
+  /* select section / dropdown section end */
