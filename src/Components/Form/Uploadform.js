@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../Form/Uploadform.css';
 
-function Uploadform({ onCategoryChange }) {
+function Uploadform() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [category, setCategory] = useState(''); // State for category input
   const [information, setInformation] = useState(''); // State for information input
@@ -45,6 +45,8 @@ function Uploadform({ onCategoryChange }) {
     <div className="formOuter">
       <form onSubmit={handleSubmit}>
         <div className='form-inputs'>
+
+         
           <label htmlFor="category">
             <div className='emptyImg-section'>
               {selectedFile && (
@@ -65,7 +67,7 @@ function Uploadform({ onCategoryChange }) {
                   value={category}
                   onChange={(e) => {
                     setCategory(e.target.value);
-                    onCategoryChange(e.target.value);
+                   
                   }}
                 >
                   <option value="">Select a Category</option>
@@ -77,10 +79,7 @@ function Uploadform({ onCategoryChange }) {
                 </select>
               </div>
             </label>
-
-          </div>
-
-          <label htmlFor="Kategori-Informasjon">
+            <label htmlFor="Kategori-Informasjon">
             <span>Kategori Informasjon</span>:
             <textarea
               id="info-txt"
@@ -90,6 +89,9 @@ function Uploadform({ onCategoryChange }) {
               onChange={(e) => setInformation(e.target.value)}
             ></textarea>
           </label>
+          </div>
+
+          
           <label htmlFor="submit">
             <button type="submit" className='submit-Posts'>Submit</button>
           </label>
