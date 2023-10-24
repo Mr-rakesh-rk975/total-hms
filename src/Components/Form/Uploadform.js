@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Form/Uploadform.css';
 
 function Uploadform() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [category, setCategory] = useState(''); // State for category input
-  const [information, setInformation] = useState(''); // State for information input
+  const [category, setCategory] = useState('');
+  const [information, setInformation] = useState('');
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const savedCategory = localStorage.getItem('selectedCategory');
+    if (savedCategory) {
+      setCategory(savedCategory);
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedCategories = JSON.parse(localStorage.getItem('categories'));
+    if (savedCategories) {
+      setCategories(savedCategories);
+    }
+  }, []);
 
   const handleFileUpload = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -16,8 +31,8 @@ function Uploadform() {
     if (selectedFile) {
       const formData = new FormData();
       formData.append('file', selectedFile);
-      formData.append('category', category); // Use category state
-      formData.append('information', information); // Use information state
+      formData.append('category', category);
+      formData.append('information', information);
 
       try {
         const response = await fetch('http://localhost:7800/posts', {
@@ -28,8 +43,15 @@ function Uploadform() {
         if (response.ok) {
           console.log('File uploaded successfully.');
           setSelectedFile(null);
-          setCategory('');
           setInformation('');
+          setCategory('');
+          localStorage.setItem('selectedCategory', category);
+
+          if (!categories.includes(category)) {
+            setCategories([...categories, category]);
+            localStorage.setItem('categories', JSON.stringify([...categories, category]));
+            setCategory('');
+          }
         } else {
           console.error('File upload failed.');
         }
@@ -37,16 +59,37 @@ function Uploadform() {
         console.error('Network error:', error);
       }
     } else {
-      // Handle case when no file is selected
+      console.error('No file selected.');
     }
   };
+
+  const handleAddCategory = () => {
+    if (category.trim() !== '' && !categories.includes(category)) {
+      setCategories([...categories, category]);
+      setCategory(category);
+      localStorage.setItem('categories', JSON.stringify([...categories, category]));
+      setCategory('');
+    }
+  };
+
+ 
 
   return (
     <div className="formOuter">
       <form onSubmit={handleSubmit}>
         <div className='form-inputs'>
+          <div className="add-post">
+            <input
+              type="text"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              placeholder="Enter a new category"
+            />
+            <button type="button" onClick={handleAddCategory}>
+              Add Category
+            </button>
+          </div>
 
-         
           <label htmlFor="category">
             <div className='emptyImg-section'>
               {selectedFile && (
@@ -65,33 +108,30 @@ function Uploadform() {
               <div className="select-container">
                 <select
                   value={category}
-                  onChange={(e) => {
-                    setCategory(e.target.value);
-                   
-                  }}
+                  onChange={(e) => setCategory(e.target.value)}
                 >
                   <option value="">Select a Category</option>
-                  <option value="Forskrifter">Forskrifter</option>
-                  <option value="Helse, miljø og sikkerhet">Helse, miljø og sikkerhet</option>
-                  <option value="Internkontroll">Internkontroll</option>
-                  <option value="Ledelse">Ledelse</option>
-                  <option value="Verneombud">Verneombud</option>
+                  {categories.map((categoryOption) => (
+                    <option key={categoryOption} value={categoryOption}>
+                      {categoryOption}
+                    </option>
+                  ))}
                 </select>
+              
               </div>
             </label>
             <label htmlFor="Kategori-Informasjon">
-            <span>Kategori Informasjon</span>:
-            <textarea
-              id="info-txt"
-              rows="1"
-              cols="5"
-              value={information}
-              onChange={(e) => setInformation(e.target.value)}
-            ></textarea>
-          </label>
+              <span>Kategori Informasjon</span>:
+              <textarea
+                id="info-txt"
+                rows="1"
+                cols="5"
+                value={information}
+                onChange={(e) => setInformation(e.target.value)}
+              ></textarea>
+            </label>
           </div>
 
-          
           <label htmlFor="submit">
             <button type="submit" className='submit-Posts'>Submit</button>
           </label>
